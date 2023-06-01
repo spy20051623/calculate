@@ -2,7 +2,7 @@
 	<div class="app">
 		<el-container class="container1">
 			<el-header class="header" height="60px">
-				<el-page-header @back="location.assign('/../..')" content="忘川风华录随机概率模拟器"/>
+				<el-page-header @back="back" content="忘川风华录随机概率模拟器"/>
 			</el-header>
 			<el-container class="container2">
 				<el-aside class="aside" width="120px">
@@ -18,6 +18,16 @@
 		</el-container>
 	</div>
 </template>
+
+<script>
+export default {
+    methods: {
+        back() {
+            location.assign('/../..')
+        }
+    }
+}
+</script>
 
 <style>
 .app {
