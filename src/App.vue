@@ -1,79 +1,63 @@
 <template>
-  <el-container style="height: 100%">
-    <el-header height="100px">
-      <span style="font-family: Consolas; font-size: 24px">忘川风华录战斗数值在线计算器</span>
-    </el-header>
-    <el-container>
-      <el-aside width="150px">
-        <el-menu default-active="1" v-model="menuActive">
-          <el-menu-item index="1" @click="menuActive='1'"><span>伤害计算</span></el-menu-item>
-          <el-menu-item index="2" @click="menuActive='2'"><span>命中率计算</span></el-menu-item>
-        </el-menu>
-      </el-aside>
-      <el-main>
-        <attack v-if="menuActive==='1'"/>
-        <control v-if="menuActive==='2'"/>
-      </el-main>
-    </el-container>
-  </el-container>
+	<div class="app">
+		<el-container class="container1">
+			<el-header class="header" height="60px">
+				<el-page-header @back="location.assign('/../..')" content="忘川风华录随机概率模拟器"/>
+			</el-header>
+			<el-container class="container2">
+				<el-aside class="aside" width="120px">
+					<el-menu class="menu" default-active="attack" router>
+						<el-menu-item index="attack"><span>伤害计算</span></el-menu-item>
+						<el-menu-item index="control"><span>命中率计算</span></el-menu-item>
+					</el-menu>
+				</el-aside>
+				<el-main class="main">
+					<router-view/>
+				</el-main>
+			</el-container>
+		</el-container>
+	</div>
 </template>
 
-<script>
-import attack from "@/components/attack.vue";
-import control from "@/components/control.vue";
-
-export default {
-  components: {
-    attack,
-    control
-  },
-  data() {
-    return {
-      menuActive: '1'
-    }
-  }
-}
-</script>
-
 <style>
-.el-header {
-  text-align: center;
-  background-color: #81e7ff;
-  line-height: 100px;
+.app {
+    height: 100%;
 }
 
-.el-aside {
-  text-align: center;
-  line-height: 200px;
+.container1 {
+    height: 100%;
 }
 
-.el-main {
-  text-align: center;
-  background-color: #c6f7ff;
+.container2 {
+    height: calc(100% - 60px);
+    width: 100%;
 }
 
-.el-menu {
-  text-align: center;
-  background-color: #a9eeff;
-  height: 100%;
+.header {
+    display: flex;
+    background-color: #81e7ff;
+    align-items: center;
 }
 
-.el-input-number .el-input__increase, .el-input-number .el-input__decrease {
-  width: 30px;
-
+.aside {
+    text-align: center;
+    line-height: 200px;
 }
 
-/*span {*/
-/*  width: 100% !important;*/
-/*  float: left !important;*/
-/*  overflow: hidden !important;*/
-/*  text-overflow: ellipsis !important;*/
-/*  white-space: normal !important;*/
-/*}*/
+.menu {
+    text-align: center;
+    background-color: #a9eeff;
+    height: 100%;
+}
+
+.main {
+    text-align: center;
+    background-color: #c6f7ff;
+}
 
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 </style>

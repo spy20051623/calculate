@@ -6,11 +6,18 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: () => import('../App.vue'),
-        meta: {
-            title: 'Welcome to Spy\'s Website!',
-        }
+        name: 'default',
+        component: () => import('../components/attack.vue')
+    },
+    {
+        path: '/attack',
+        name: 'attack',
+        component: () => import('../components/attack.vue')
+    },
+    {
+        path: '/control',
+        name: 'control',
+        component: () => import('../components/control.vue')
     }
 ]
 
@@ -19,11 +26,5 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes
 })
-
-router.beforeEach(async (to) => {
-    if (to.meta.title) {
-        document.title = to.meta.title;
-    }
-});
 
 export default router
